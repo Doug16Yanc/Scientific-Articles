@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Document(collation = "tb_orders")
+@Document(collection = "orders")
 public class OrderEntity {
 
     @MongoId
@@ -18,6 +18,8 @@ public class OrderEntity {
     @Indexed(name = "researcher_id_index")
     private Long researcherId;
 
+    private String researcherName;
+
     @Field(targetType = FieldType.DECIMAL128)
     private BigDecimal totalPrice;
 
@@ -25,9 +27,10 @@ public class OrderEntity {
 
     public OrderEntity() {}
 
-    public OrderEntity(Long orderId, Long researcherId, BigDecimal totalPrice, List<OrderPaper> items) {
+    public OrderEntity(Long orderId, Long researcherId, String researcherName, BigDecimal totalPrice, List<OrderPaper> articles) {
         this.orderId = orderId;
         this.researcherId = researcherId;
+        this.researcherName = researcherName;
         this.totalPrice = totalPrice;
         this.articles = articles;
     }
@@ -46,6 +49,14 @@ public class OrderEntity {
 
     public void setResearcherId(Long researcherId) {
         this.researcherId = researcherId;
+    }
+
+    public String getResearcherName() {
+        return researcherName;
+    }
+
+    public void setResearcherName(String researcherName) {
+        this.researcherName = researcherName;
     }
 
     public BigDecimal getTotalPrice() {
