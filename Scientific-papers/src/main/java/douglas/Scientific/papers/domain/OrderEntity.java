@@ -1,5 +1,6 @@
 package douglas.Scientific.papers.domain;
 
+import org.springframework.data.mongodb.core.aggregation.BooleanOperators;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -7,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Document(collection = "orders")
@@ -20,18 +23,14 @@ public class OrderEntity {
 
     private String researcherName;
 
-    @Field(targetType = FieldType.DECIMAL128)
-    private BigDecimal totalPrice;
-
     private List<OrderPaper> articles;
 
     public OrderEntity() {}
 
-    public OrderEntity(Long orderId, Long researcherId, String researcherName, BigDecimal totalPrice, List<OrderPaper> articles) {
+    public OrderEntity(Long orderId, Long researcherId, String researcherName, List<OrderPaper> articles) {
         this.orderId = orderId;
         this.researcherId = researcherId;
         this.researcherName = researcherName;
-        this.totalPrice = totalPrice;
         this.articles = articles;
     }
 
@@ -59,16 +58,8 @@ public class OrderEntity {
         this.researcherName = researcherName;
     }
 
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     public List<OrderPaper> getArticles() {
-        return articles;
+        return Collections.unmodifiableList(articles);
     }
 
     public void setArticles(List<OrderPaper> articles) {

@@ -30,10 +30,8 @@ public class OrderController {
                                                                  @RequestParam(name = "page", defaultValue = "0") Integer page,
                                                                  @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) throws BadLocationException {
         var pageResponse = orderService.findAllByResearcherId(researcherId, PageRequest.of(page, pageSize));
-        var totalOnOrders = orderService.findTotalOnOrderByResearcher(researcherId);
-
         return ResponseEntity.ok(new ApiResponse<>(
-                Map.of("totalOnOrders", totalOnOrders),
+                Map.of("response", pageResponse),
                 pageResponse.getContent(),
                 PaginationResponse.fromPage(pageResponse)
         ));

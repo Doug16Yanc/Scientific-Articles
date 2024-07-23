@@ -1,14 +1,14 @@
 package douglas.Scientific.papers.dto;
 
 import douglas.Scientific.papers.domain.OrderEntity;
+import douglas.Scientific.papers.domain.OrderPaper;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 public record OrderResponse(Long orderId,
                             Long researcherId,
-                            String researcherName,
-                            BigDecimal total) {
+                            List<OrderPaper> papers) {
     public static OrderResponse fromEntity(OrderEntity orderEntity) {
-        return new OrderResponse(orderEntity.getOrderId(), orderEntity.getResearcherId(), orderEntity.getResearcherName(), orderEntity.getTotalPrice());
+        return new OrderResponse(orderEntity.getOrderId(), orderEntity.getResearcherId(), orderEntity.getArticles());
     }
 }
