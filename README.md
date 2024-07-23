@@ -23,7 +23,7 @@
 
 <p align="center">
 
-Java software that manages the submissions of scientific articles from all areas of human knowledge to a document-oriented database, MongoDB, using a messaging system, RabbitMQ. A researcher can request the submission of up to three papers, which must be associated with the first name of the research, i.e., the researcher who requests the submissions. Each article has its submission price, which must be summed up and the total returned by the API in the DTOs. This software is designed to manage the submissions of these scientific works and generate reports on these submissions.
+Java software that manages the submission of scientific articles from all areas of human knowledge to a document-oriented database, MongoDB, using a messaging system, RabbitMQ. A researcher may request the submission of up to one or more articles, which must be associated with the first name of the research, that is, of the researcher requesting the submission. This software was developed to manage the submissions of these scientific works and generate reports on these submissions.
   
 </p>
 
