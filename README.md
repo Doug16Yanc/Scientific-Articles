@@ -47,4 +47,15 @@ Java software that manages the submission of scientific articles from all areas 
   ```bash
       git clone git@github.com:Doug16Yanc/Scientific-Articles.git
  ```
+  Configure MongoDB database management system properties with your local password, enter the Docker directory already correctly configured on your device:
+  
+ 
+  ```bash
+      cd docker
+ ```
+   And pull the images:
+
+  ```bash
+     docker compose up --build
+ ```
 </p>
